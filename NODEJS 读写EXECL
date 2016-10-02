@@ -8,6 +8,9 @@
 3. 在环境变量-->系统变量里新建一个NODE_PATH变量，添加C:\Program Files\nodejs\node_modules;
 这个变量用于添加node模块在被require时的默认搜索路径，如果不加这个变量，那么你只能把要运行的js文件放到nodejs安装目录下，或是将模块包安装到要运行的js文件的目录下，才能正常运行。
 
+4. 如果报： npm WARN enoent ENOENT: no such file or directory 应该是项目目录下没有package.json这个文件。
+可以使用npm init -f命令生成一下，至于生成的package.json中缺少的字段你可以参照其他的模块的package.json文件填进去。
+
 demo.js
 var xlsx = require('node-xlsx');  
 // read  
