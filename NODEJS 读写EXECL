@@ -1,0 +1,25 @@
+1. 确保nodejs 已经在电脑上安装，假如安装路径是C:\Program Files\nodejs\;
+(如提示“node 不是内部或外部的命令”，则需要在电脑的环境变量-->用户变量里的PATH添加该路径)
+(npm -v 查看vpm 版本)
+
+2. 通过npm命令行安装node-xlsx， 命令： npm install node-xlsx g
+(没有看到报错就可以说明安装ok，用npm node-xlsx -v 查看)
+
+3. 在环境变量-->系统变量里新建一个NODE_PATH变量，添加C:\Program Files\nodejs\node_modules;
+这个变量用于添加node模块在被require时的默认搜索路径，如果不加这个变量，那么你只能把要运行的js文件放到nodejs安装目录下，或是将模块包安装到要运行的js文件的目录下，才能正常运行。
+
+demo.js
+var xlsx = require('node-xlsx');  
+// read  
+var obj = xlsx.parse('./test.xlsx');  
+console.log(JSON.stringify(obj));  
+
+execl ：
+1	2	3		
+TRUE	FALSE	(space)	sheetjs	
+foo	bar	2014-2-19	0.3	
+baz	(space)	qux		
+
+输出： 
+[{"name":"mySheetName","data":[[1,2,3],[true,false,null,"sheetjs"],["foo","bar",
+41689.6041666667,"0.3"],["baz",null,"qux"]]}]
